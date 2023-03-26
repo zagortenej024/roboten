@@ -40,3 +40,36 @@ const userPatchSchema = Joi.object({
     isAdmin: Joi.boolean()
         .default(false)
 });
+
+
+const absencePostSchema = Joi.object({
+    userId: Joi.int()
+        .required(),
+    absenceType: Joi.string()
+        .alphanum()
+        .required(),
+    startDate: Joi.date()
+        .required(),
+    endDate: Joi.date()
+        .required(),
+    isApproved: Joi.boolean()
+        .default(false),
+});
+
+
+const absencePatchSchema = Joi.object({
+    userId: Joi.int()
+        .required(),
+    absenceType: Joi.string()
+        .alphanum(),
+    startDate: Joi.date(),
+    endDate: Joi.date(),
+    isApproved: Joi.boolean()
+});
+
+module.exports = {
+    userPostSchema,
+    userPatchSchema,  
+    absencePostSchema,
+    absencePatchSchema  
+}

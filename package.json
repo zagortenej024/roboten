@@ -3,6 +3,7 @@
     "body-parser": "^1.20.2",
     "chai": "^4.3.7",
     "chai-http": "^4.3.0",
+    "ejs": "^3.1.9",
     "env-cmd": "^10.1.0",
     "express": "^4.18.2",
     "joi": "^17.9.1",
@@ -12,8 +13,8 @@
     "sequelize": "^6.30.0"
   },
   "scripts": {
-    "start": "env-cmd -f api/config/.env node api/app.js",
-    "test": "mocha api/tests/*.test.js"
+    "start": "env-cmd -f roboten/config/.env node roboten/app.js",
+    "test": "mocha roboten/tests/*.test.js"
   },
   "type": "commonjs",
   "devDependencies": {

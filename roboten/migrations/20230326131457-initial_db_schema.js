@@ -90,6 +90,10 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false
       },
+      isApproved: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
       createdAt: Sequelize.DATE,
       updatedAt: Sequelize.DATE,
       UserId: {

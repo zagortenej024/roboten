@@ -1,7 +1,8 @@
 const express = require("express");
-const routes = require("./routes");
-const db = require("./models");
+const path = require("path");
 const bodyParser = require("body-parser");
+const db = require("./models");
+const routes = require("./routes");
 const config = require(__dirname + "/config/config.json")[process.env.APP_ENV];
 
 
@@ -19,4 +20,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.listen(config.api_port, config.api_host, () => {
     console.log(`Server running at ${config.api_host}:${config.api_port}${config.api_base_url}`);
+});
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "ejs");
+app.get("/companies", function(req, res){
+    res.render("company", {
+        title: "roboten"
+    })
 });

@@ -32,8 +32,7 @@ getUserById = async (req, res) => {
       const userId = req.params.id;
       const user = await User.findByPk(userId);
       if (!user) {
-        res.status(404).json({ message: "User not found" });
-        return;
+        return res.status(404).json({ message: "User not found" });
       }
       res.status(200).json(user);
     } catch (err) {
@@ -41,6 +40,30 @@ getUserById = async (req, res) => {
     }
 };
 
+getAllEmployeesByCompanyId = async (req, res) => {
+  try {
+    const companyId = req.param.company_id;
+    const company = await Company.findByPk(companyId);
+    if (!company) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    const employees = await User.findAll({
+      include: [
+        {
+          model: Company,
+          attributes: [],
+          through: { 
+            model: UserCompany,
+            where: { companyId: companyId, isAdmin: false }
+          }
+        }
+      ]
+    });
+    return employees;
+  } catch (err) {
+    serverError(res, err);
+  }
+}
 
 updateUserById = async (req, res) => {
     try {
@@ -54,8 +77,7 @@ updateUserById = async (req, res) => {
         where: { userId:  userId},
       });
       if (numAffectedRows === 0) {
-        res.status(404).json({ message: "User not found" });
-        return
+        return res.status(404).json({ message: "User not found" });
       }
       res.status(200).json(user);
     } catch (err) {
@@ -70,8 +92,7 @@ deleteUserById = async (req, res) => {
         where: { userId: req.params.id },
       });
       if (numAffectedRows === 0) {
-        res.status(404).json({ message: "User not found" });
-        return;
+        return res.status(404).json({ message: "User not found" });
       }
       res.sendStatus(200);
     } catch (err) {
@@ -83,6 +104,7 @@ deleteUserById = async (req, res) => {
 module.exports = {
     getAllUsers,
     getUserById,
+    getAllEmployeesByCompanyId,
     createUser,
     updateUserById,
     deleteUserById,

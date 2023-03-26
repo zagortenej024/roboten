@@ -1,0 +1,28 @@
+<!-- views/absences.ejs -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Absences</title>
+  </head>
+  <body>
+    <h1>Absences</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% absences.forEach(function(absence) { %>
+        <tr>
+          <td><%= absence.absenceType %></td>
+          <td><%= absence.startDate %></td>
+          <td><%= absence.endDate %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </body>

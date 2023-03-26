@@ -20,11 +20,16 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE,
       allowNull: false,
     },
+    isApproved: {
+      type: DataTypes.BOOLEAN,
+      default: false,
+    },
     createdAt: Sequelize.DATE,
     updatedAt: Sequelize.DATE
   });
 
   Absence.associate = function(models) {
+    Absence.belongsTo(models.User);
     Absence.belongsTo(models.User);
   };
 

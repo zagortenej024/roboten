@@ -1,0 +1,25 @@
+<!-- views/companies.ejs -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Companies</title>
+  </head>
+  <body>
+    <h1>Companies</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% companies.forEach(function(company) { %>
+        <tr>
+          <td><%= company.name %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </body>
+</html>
