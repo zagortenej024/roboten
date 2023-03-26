@@ -1,0 +1,10 @@
+{
+  "local": {
+    "base_url": "http://localhost:3000",
+    "username": "postgres",
+    "password": "admin123",
+    "database": "roboten",
+    "host": "localhost",
+    "dialect": "postgres"
+  }
+}

@@ -1,11 +1,20 @@
 {
   "dependencies": {
+    "chai": "^4.3.7",
     "env-cmd": "^10.1.0",
     "express": "^4.18.2",
+    "latest-version": "^7.0.0",
+    "mocha": "^10.2.0",
+    "pg": "^8.10.0",
     "sequelize": "^6.30.0"
   },
   "scripts": {
     "start": "env-cmd -f api/config/.env.local node api/app.js",
-    "start:dev": "env-cmd -f api/config/.env.dev node api/app.js"
+    "start:dev": "env-cmd -f api/config/.env.dev node api/app.js",
+    "test": "mocha api/tests/*.test.js"
+  },
+  "type": "commonjs",
+  "devDependencies": {
+    "sequelize-cli": "^6.6.0"
   }
 }
