@@ -22,8 +22,8 @@ router.patch("/users/:id", userController.updateUserById);
 router.delete("/users/:id", userController.deleteUserById);
 
 router.get("/users/:company_id", (req, res) => {
-    const employees = userController.getAllEmployeesByCompanyId(req.param.company_id);
-    res.render("employees.ejs", { employees });
+    const employees = userController.getAllEmployeesByCompanyId(req, res);
+    res.render("employee", { employees });
 });
 
 // Company
@@ -35,8 +35,8 @@ router.patch("/companies/:id", companyController.updateCompanyById);
 router.delete("/companies/:id", companyController.deleteCompanyById);
 
 router.get("/companies/:user_id", (req, res) => {
-    const companies = companyController.getAllCompaniesByAdminUserId(req.param.user_id);
-    res.render("companies.ejs", { companies });
+    const companies = companyController.getAllCompaniesByAdminUserId(req, res);
+    res.render("company", { companies });
 });
 
 // Absence
@@ -48,8 +48,8 @@ router.patch("/absences/:id", absenceController.updateAbsenceById);
 router.delete("/absences/:id", absenceController.getAllAbsences);
 
 router.get("/absences/:user_id", (req, res) => {
-    const absences = absenceController.getAbsencesByEmployeeId(req.param.user_id);
-    res.render("absences.ejs", { absences });
+    const absences = absenceController.getAbsencesByEmployeeId(req, res);
+    res.render("absence", { absences });
 });
 
 

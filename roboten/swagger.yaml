@@ -1,0 +1,223 @@
+openapi: 3.0.3
+info:
+  title: My API
+  version: 1.0.0
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        firstName:
+          type: string
+        lastName:
+          type: string
+        username:
+          type: string
+        password:
+          type: string
+        email:
+          type: string
+        isAdmin:
+          type: boolean
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+      required:
+        - id
+        - firstName
+        - lastName
+        - username
+        - password
+        - email
+        - createdAt
+        - updatedAt
+    Company:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+      required:
+        - id
+        - name
+        - createdAt
+        - updatedAt
+    Absence:
+      type: object
+      properties:
+        id:
+          type: integer
+        userId:
+          type: integer
+        absenceType:
+          type: string
+        startDate:
+          type: string
+        endDate:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+      required:
+        - id
+        - userId
+        - absenceType
+        - startDate
+        - endDate
+        - createdAt
+        - updatedAt
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+      required:
+        - message
+servers:
+  - url: http://localhost:3000
+paths:
+  /healthcheck:
+    get:
+      summary: Healthcheck
+      description: Check if the server is up and running
+      responses:
+        '200':
+          description: OK
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /users:
+    get:
+      summary: Get all users
+      description: Get all users from the database
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Users'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create a user
+      description: Create a user and add it to the database
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                username:
+                  type: string
+                password:
+                  type: string
+                email:
+                  type: string
+                isAdmin:
+                  type: boolean
+              required:
+                - name
+                - email
+                - companyId
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+    patch:
+      summary: Update a user
+      description: Update a user and save it to the database
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: integer
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                username:
+                  type: string
+                password:
+                  type: string
+                email:
+                  type: string
+                isAdmin:
+                  type: boolean
+              required:
+                - userId
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+      delete:
+        summary: Delete a user
+        description: Delete the user from the database
+        responses:
+          '200':
+            description: Success
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Users'
+          '400':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          '500':
+            description: Internal Server Error
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'

@@ -10,7 +10,10 @@
     "latest-version": "^7.0.0",
     "mocha": "^10.2.0",
     "pg": "^8.10.0",
-    "sequelize": "^6.30.0"
+    "sequelize": "^6.30.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^4.6.2",
+    "yamljs": "^0.3.0"
   },
   "scripts": {
     "start": "env-cmd -f roboten/config/.env node roboten/app.js",

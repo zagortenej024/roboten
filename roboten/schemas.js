@@ -43,7 +43,7 @@ const userPatchSchema = Joi.object({
 
 
 const absencePostSchema = Joi.object({
-    userId: Joi.int()
+    userId: Joi.number()
         .required(),
     absenceType: Joi.string()
         .alphanum()
@@ -58,7 +58,7 @@ const absencePostSchema = Joi.object({
 
 
 const absencePatchSchema = Joi.object({
-    userId: Joi.int()
+    userId: Joi.number()
         .required(),
     absenceType: Joi.string()
         .alphanum(),

@@ -12,6 +12,7 @@ Resource Absence Management System
 
 - [Documentation][docs]
 - [Postman Workspace][postman workspace]
+- [Swagged Docs][swagger docs]
 
 
 ## Setting up local environment
@@ -79,4 +80,5 @@ npm test
 [postgresql download]: https://www.postgresql.org/download/
 [docs]: https://drive.google.com/drive/folders/1xfFouCBY8yX5xph-nDAJJOCItpgBK2Xa?ths=true
 [postman workspace]: https://www.postman.com/comvo-api/workspace/roboten
+[swagger docs]: http://localhost:3000/api-docs/
 [pgadmin4 download]: https://www.pgadmin.org/download/
