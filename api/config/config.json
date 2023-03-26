@@ -1,20 +1,24 @@
 {
   "local": {
-    "host": "localhost",
-    "port": 3000,
-    "base_url": "/api/v1",
+    "api_host": "localhost",
+    "api_port": 3000,
+    "api_base_url": "/api/v1",
     "username": "postgres",
     "password": "admin123",
+    "host": "localhost",
+    "port": 5432,
     "database": "roboten",
     "dialect": "postgres"
   },
   "testing": {
-    "host": "localhost",
-    "port": 3000,
-    "base_url": "",
+    "api_host": "localhost",
+    "api_port": 3000,
+    "api_base_url": "/api/v1",
     "username": "postgres",
     "password": "admin123",
-    "database": "roboten-test",
+    "host": "localhost",
+    "port": 5432,
+    "database": "roboten",
     "dialect": "postgres"
   }
 }
