@@ -53,6 +53,7 @@ npx sequelize-cli db:migrate:undo
 ### Database
 
 1. Use [pgAdmin4][pgadmin4 download] UI agent for management
+2. Create the database. It should be named `roboten`, the user should be `postgres` and the password `admin123`, otherwise, you'll need to update the `config.json` file
 
 ### Run
 
