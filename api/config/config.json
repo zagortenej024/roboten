@@ -1,10 +1,20 @@
 {
   "local": {
-    "base_url": "http://localhost:3000",
+    "host": "localhost",
+    "port": 3000,
+    "base_url": "/api/v1",
     "username": "postgres",
     "password": "admin123",
     "database": "roboten",
+    "dialect": "postgres"
+  },
+  "testing": {
     "host": "localhost",
+    "port": 3000,
+    "base_url": "",
+    "username": "postgres",
+    "password": "admin123",
+    "database": "roboten-test",
     "dialect": "postgres"
   }
 }

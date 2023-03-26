@@ -1,11 +1,16 @@
-const http = require('http');
+const express = require("express");
+const routes = require("./routes");
+const bodyParser = require("body-parser");
+const config = require(__dirname + "/config/config.json")[process.env.APP_ENV];
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World');
+
+const app = express();
+app.use(express.json());
+app.use(config.base_url, routes);
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.listen(config.port, config.host, () => {
+    console.log(`Server running at ${config.host}:${config.port}${config.base_url}`);
 });
 
-server.listen(() => {
-  console.log(`Server running at ${process.env.BASE_URL}/`);
-});
+module.exports = app;

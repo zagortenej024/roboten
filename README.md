@@ -16,7 +16,7 @@ Resource Absence Management System
 
 ## Setting up local environment
 
-1. Create an `.env` file in the `config` folder and add the `NODE_ENV` environment variable to run the app in the desired environment.
+1. Create an `.env` file in the `config` folder and add the `APP_ENV` environment variable to run the app in the desired environment. Check for possible environments in the `config.js` file.
 2. Install dependencies
 ```bash
 npm install
@@ -60,7 +60,8 @@ npx sequelize-cli db:migrate:undo
 ### Testing
 
 1. Go to pgAdmin4 and check that the server is running
-2. Run:
+2. Update the `APP_ENV` variable to `testing`
+3. Run:
 
 ```
 npm test
